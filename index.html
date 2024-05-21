@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/dc134dd8ff.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="nav-header">
+        <ul>
+            <li><a href="#section1"><img id="logo" src="./assets/Logo.png" alt="logo" class="logo"></a></li>
+            <li><a href="#section2">Music</a></li>
+            <li><a href="#section3">About</a></li>
+            <li><a href="#section4">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div id="section1">
+    <div class="radio-container">
+        <div class="radio"> 
+            <nav class="nav-radio">
+               <div class="circle">
+                <i class="fa-solid fa-angle-left"></i>
+               </div> 
+
+               <div class="circle">
+                <i class="fa-solid fa-bars"></i>
+               </div> 
+            </nav>
+            <img src="./assets/fv2.PNG" class="song-img song-icon" id="songImage">
+            <h2 id="songName">por gentileza você poderia ir no chão (beat bolha)</h2>
+            <p>F.Vianna</p>
+
+            <audio id="song">
+                <source src="./assets/_vai no chão  (Mastered with Thunder at 100pct).wav" type="audio/mpeg">
+            </audio>
+            <input type="range" value="0" id="progress">
+
+            <div class="controls">
+                <div onclick="backward()"><i class="fa-solid fa-backward"></i></div>
+                <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+                <div onclick="forward()"><i class="fa-solid fa-forward"></i></div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="section2">
+        
+        <ol class="list1">
+            <h5>As Mais Ouvidas no SoundCloud</h5>
+            <li>
+                <h4>Set's:</h4>
+            </li>
+            <li><img src="./assets/set.PNG" alt="São-Jorge-Session-1" class="sounds"></li>
+            <li>
+                <h2>São Jorge Session 1</h2>
+                <h2>criada em:</h2>
+                <h3>30/07/2023</h3>
+            </li>
+            <li><br></li>
+            <li><img src="./assets/set2.PNG" alt="bh-funk" class="sounds"></li>
+            <li>
+                <h2>Take my breath away bh funk</h2>
+            </li>
+            <li>
+                <h2>criada em:</h2>
+                <h3>12/04/2023</h3>
+            </li>
+        </ol>
+
+        <ol class="list2">
+            <li>
+                <h4>Solo:</h4>
+            </li>
+            <li><img src="./assets/fv3.PNG" alt="São-Jorge-Session-1" class="sounds"></li>
+            <li>
+                <h2>Jersey da Silva Funk</h2>
+                <h2>criada em:</h2>
+                <h3>18/08/2023</h3>
+            </li>
+            <li><br></li>
+            <li><img src="./assets/fv2.PNG" alt="bh-funk" class="sounds"></li>
+            <li>
+                <h2>por gentileza você poderia ir no chão (beat bolha)</h2>
+            </li>
+            <li>
+                <h2>criada em:</h2>
+                <h3>28/06/2023</h3>
+            </li>
+        </ol>
+
+
+        <ol class="list3">
+            <li>
+                <h4>Feat's:</h4>
+            </li>
+            <li><img src="./assets/feat.PNG" alt="São-Jorge-Session-1" class="sounds"></li>
+            <li>
+                <h2>Dj Fvianna Feat. Ojerime Pissed Off(interlude)</h2>
+                <h2>criada em:</h2>
+                <h3>03/04/2024</h3>
+            </li>
+            <li><br></li>
+            <li><img src="./assets/feat2.PNG" alt="bh-funk" class="sounds"></li>
+            <li>
+                <h2>Dj Fvianna feat. Tracie e Tasha - Desce Licor 46</h2>
+            </li>
+            <li>
+                <h2>criada em:</h2>
+                <h3>31/01/2024</h3>
+            </li>
+        </ol>
+    </div>
+
+    <div id="section3">
+        <img src="./assets/image.png" alt="F.vianna" class="perfil">
+        <p class="text">Meu nome é Felipe Vianna @f.vianna , menino preto nascido em 1993 quando o sol estava em câncer. Pai da
+            Sophie, Mult artista (Diretor criativo, Fotógrafo, Diretor, Vídeomaker, Dj, Influencer, Articulador
+            Cultural, Artista Visual, Grafiteiro) De um tudo um pouco e querendo ser um pouco mais.
+            Gasto minha existência fazendo as coisas existirem. Há 9 anos invento moda, registro o que vejo, passo pro
+            mundo o que gosto, tento caber onde meu povo não coube. Dentre algumas coisas que resumem onde estive, cito
+            a Revista Vogue, SPFW ja trabalhei com marcas como Facebook, Tidal, Spotfy, Heineken, Budweiser, 99, Hering.
+            ja toquei a abertura do show do KL Jay do FBC e Vhoor. Criador do @StudioF.Vianna, fiz com que o centro
+            conhecesse o São Jorge, que o São Jorge conhecesse o Beco – espaço da periferia revitalizado por meio da
+            arte: o @becosj. moro em São Paulo, mas desejo mesmo estar no topo. Pretos no topo e eu falo sério.</p>
+    </div>
+
+    <div id="section4">
+        <h9> Contact </h9>
+    </div>
+
+    <script>
+        //funçao para input de duraçao
+        let progress = document.getElementById("progress");
+        let song = document.getElementById("song");
+        let ctrlIcon= document.getElementById("ctrlIcon");
+        let currentSongIndex = 0
+
+        //lista de URLs das musicas
+        const musicList = [
+        "./assets/_vai no chão  (Mastered with Thunder at 100pct).wav",
+        "./assets/JERSEY.wav"
+        ];
+        // lista de nomes das musicas
+        const songNames = [
+            "Vai no Chão",
+            "JERSEY",
+        ]
+        // lista de imagens das musicas
+        const songImages = [
+            "./assets/fv2.PNG",
+            "./assets/fv3.PNG",
+        ]
+
+        song.onloadedmetadata = function () {
+            progress.max = song.duration;
+            progress.value = song.currentTime;
+        }
+        //funçao play e pause
+        function playPause (){
+            if (ctrlIcon.classList.contains("fa-pause")){
+                song.pause();
+                ctrlIcon.classList.remove("fa-pause");
+                ctrlIcon.classList.add("fa-play")
+            } else {
+                song.play();
+                ctrlIcon.classList.add("fa-pause");
+                ctrlIcon.classList.remove("fa-play");
+            }
+        }
+        //funçao do input para acompanhar 
+        if(song.play()) {
+            setInterval(()=>{
+                progress.value = song.currentTime;
+            },500);
+        }
+
+        progress.onchange = function (){
+            song.play();
+            song.currentTime = progress.value;
+            ctrlIcon.classList.add("fa-pause");
+            ctrlIcon.classList.remove("fa-play");
+        }
+        // funçao para avançar para a proxima musica na lista
+        function forward () {
+            currentSongIndex++;
+            if (currentSongIndex >= musicList.length) {
+                currentSongIndex = 0
+            }
+            updateSong()
+        }
+
+        //funçao para retroceder para a musica anterior na lista
+        function backward() {
+            currentSongIndex --
+            if (currentSongIndex < 0) {
+                currentSongIndex = musicList.length - 1
+            }
+
+            updateSong()
+        }
+
+        // funcao para atualizar a musica atual no elemento <audio>
+            function updateSong() {
+                song.src = musicList[currentSongIndex]
+                song.play()
+
+                //atualizar o nome da musica
+                document.getElementById("songName").textContent = songNames[currentSongIndex]
+
+                //atualizar a imagem da musica
+                document.getElementById("songImage").src = songImages[currentSongIndex]
+            }
+
+            //atualizar o icone do botao quuando a musica começar a tocar
+            song.onplay = function() {
+                ctrlIcon.classList.add("fa-pause")
+                ctrlIcon.classList.remove("fa-play")
+            }
+
+            //atualizar o icone do botao quando a musica e pausada
+            song.onpause = function () {
+                ctrlIcon.classList.remove("fa-pause")
+                ctrlIcon.classList.add("fa-play")
+            }
+
+            //funçao para o img-icon iniciar e parar junto com a musica
+
+            function playPause () {
+                if(ctrlIcon.classList.contains("fa-pause")){
+                    song.pause();
+                    ctrlIcon.classList.remove("fa-pause")
+                    ctrlIcon.classList.add("fa-play")
+                    pauseRotation()
+                } else {
+                    song.play()
+                    ctrlIcon.classList.add("fa-pause")
+                    ctrlIcon.classList.remove("fa-play")
+                    startRotation()
+                }
+            }
+
+            function startRotation () {
+                document.querySelector('.song-img').classList.add('song-icon')
+            }
+
+            function pauseRotation () {
+                document.querySelector('.song-img').classList.remove('song-icon')
+            }
+    </script>
+</body>
+
+</html>
